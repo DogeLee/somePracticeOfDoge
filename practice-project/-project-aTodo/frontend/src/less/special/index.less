@@ -1,0 +1,190 @@
+@import url('../general/init.less');
+@import url('../general/flexible.less');
+@import url('../general/general.less');
+
+.container{
+	position: relative;
+	overflow: auto;
+	height: 100%;
+	width:100%;
+}
+
+.main{
+	height: 90%;
+	width: 100%;
+	overflow: auto;
+}
+
+#main-1{
+	margin-top: 1.5rem;
+}
+
+.footer{
+	height: 10%;
+	width:100%;
+	background-color: @gray-bg;
+
+	display: flex;
+	justify-content:space-around;
+	align-items:center;
+	
+	font-size:1.5rem;
+}
+
+.toolbarActive{
+	color:@green2;
+}
+
+.i-check{
+	color:@green2;
+	font-size: 1.7rem;
+}
+
+.i-delete{
+	color:@red;
+	font-size: 1.7rem;
+}
+
+.i-addtodo{
+	font-size: 2rem;
+}
+
+.todoChecked{
+	color:@green1;
+}
+
+.todolist{
+	display: flex;
+	flex-direction:column;
+	align-items:center;
+}
+
+.todo-input-con{
+	width: 90%;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	margin-bottom: 1rem;
+	margin-top: 0.5rem;
+}
+
+.todo-datemsg{
+	font-size: 1.1rem;
+	margin-top: 0.5rem;
+}
+
+#todo-input{
+	font-size: 1.1rem;
+	min-height: 2.5rem;
+	width: 80%;
+	padding-left: 0.5rem;
+	margin-right: 0.5rem;
+	border: 0 0;
+	border-bottom:1px solid @gray-border;
+}
+
+.todolist-con{
+	height: 1.5rem;
+	width: 80%;
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	margin-bottom: 0.5rem;
+	padding: 0.3rem 0.3rem;
+	div{
+		font-size: 1.1rem;
+		width: 75%;
+		min-height: 1em;
+		word-wrap:break-word;
+	}
+}
+
+.canlender{
+	position: fixed;
+	top: 0;
+	background-color: @gray-bg;
+	width: 100%;
+}
+
+.canlender-con{
+	position: relative;
+	min-height: 1.5rem;
+}
+
+.canlender-main-head{
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	p{
+		text-align: center;
+		font-size: 1.1rem;
+	}
+	span{
+		margin: 0 1rem;
+	}
+	i{
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+}
+
+.canlender-footer{
+	width: 100%;
+	height: 1.5rem;
+	font-size: 1.2rem;
+	position: absolute;
+	bottom: 0;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.canlender-footer-empty{
+	height: 1.5rem;
+}
+
+.canlender-main-con{
+	display: flex;
+	margin: auto;
+	margin-bottom: 1.5rem;
+	width: 17.5rem;
+	flex-wrap:wrap;
+	justify-content:flex-start;
+}
+
+.canlender-main-item{
+	text-align: center;
+	height: 1.5rem;
+	width: 1.5rem;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	margin-top: 0.5rem;
+	span{
+		line-height: 1.5rem;
+		color: white;
+	}
+}
+
+.canlenderMainItemGreen0{
+	//border:1px solid @gray-border;
+	background-color: @gray-bg-d;
+}
+
+.canlenderMainItemGreen1{
+	//border:1px solid @gray-border;
+	background-color: @canlendar-green1;
+}
+
+.canlenderMainItemGreen2{
+	//border:1px solid @gray-border;
+	background-color: @canlendar-green2;
+}
+
+.canlenderMainItemGreen3{
+	//border:1px solid @gray-border;
+	background-color: @canlendar-green3;
+}
+
+.canlenderMainItemGreen4{
+	//border:1px solid @gray-border;
+	background-color: @canlendar-green4;
+}

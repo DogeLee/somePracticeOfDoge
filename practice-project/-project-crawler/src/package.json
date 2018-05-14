@@ -1,0 +1,14 @@
+{
+  "name": "new",
+  "version": "1.0.0",
+  "description": "a new server for doge.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "doge",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^4.12.1"
+  }
+}

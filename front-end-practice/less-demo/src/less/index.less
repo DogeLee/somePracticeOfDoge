@@ -1,0 +1,45 @@
+@c1:red;		//变量
+@c2:green;
+@w:100px;
+@h1:80px;
+@h2:40px;
+
+#div1{
+	width:@w;
+	height:@h1;
+	background-color:@c1;
+}
+
+#div2{
+	#div1;				//混合
+	.border(pink);		//带参数混合
+	background-color:@c2;
+}
+
+.border(@c:black){
+	border:2px solid @c;
+}
+
+.size(high,@w){			//匹配模式
+	height: 80px+60;	//运算
+	width: @w;
+}
+
+.size(low,@w){
+	height: 40px;
+	width: @w;
+}
+
+#div3{
+	.size(high,200px);
+	background-color: red;
+
+	span{				//嵌套
+		color:yellow;
+
+		&:hover{		//&代表上一层选择器
+			color:green;
+		}
+	}
+}
+

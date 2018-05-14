@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>echarts demo</title>
+	<script src="echarts.js"></script>
+</head>
+<body>
+	<div id="main1" style="width: 600px;height:400px;float: left;"></div>
+	<div id="main2" style="width: 600px;height:400px;float: left;"></div>
+	<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        {
+        	//数据准备
+
+        	//时间线
+        	let timeLine = new Array();		//时间线数组
+        	let oneDay = new Date();			//当前日期
+
+        	for(let i=0;i<7;i++){
+        		let dateStr = oneDay.getFullYear().toString().substring(2,4) + '-' + (oneDay.getMonth()+1) + '-' + oneDay.getDate();	//日期转为字符串
+        		timeLine.push(dateStr);		//加入数组
+        		oneDay = new Date(oneDay.getTime() - 24*60*60*1000);	//日期变为前一天
+        	}
+
+        	timeLine.reverse();		//时间线数组倒置
+
+        	//四项统计数据
+        	let staff = [80,83,75,60,78,89,90];		//出勤员工
+        	let visitor = [23,20,18,30,5,15,22];	//来访人员
+        	let car = [40,41,30,25,33,43,48];		//园区车辆
+        	let visicar = [10,8,5,15,2,6,10];		//来访车辆
+
+        	let myChart1 = echarts.init(document.getElementById('main1'));
+        	let myChart2 = echarts.init(document.getElementById('main2'));
+
+	        // 指定图表的配置项和数据
+	        let option1 = {
+	            title: {
+	                text: '人员数据分析'
+	            },
+	            tooltip: {},
+	            toolbox: {
+			        show: true,
+			        right: '10%',
+			        feature: {		            
+			            magicType: {
+			            	type: ['line', 'bar']
+			            },
+			            restore:{}
+			        }
+			    },
+	            legend: {
+	                data:['员工出勤','来访人员']
+	            },
+	            xAxis: {
+	                data: timeLine,
+	                splitLine:{
+	            		show: true
+	            	}
+	            },
+	            yAxis: {
+	            	splitLine:{
+	            		show: true
+	            	}
+	            },
+	            series: [
+	            {
+	                name: '员工出勤',
+	                type: 'line',
+	                data: staff,
+	                itemStyle : { 
+	                	normal: {
+	                		color:'#009AD7',
+	                		lineStyle:{
+	                			color:'#009AD7',
+	                		},
+	                		label : {
+	                			show: true
+	                		}
+	                	}
+	                }
+	            },
+	            {
+	                name: '来访人员',
+	                type: 'line',
+	                data: visitor,
+	                itemStyle : { 
+	                	normal: {
+	                		color:'#FFAA31',
+	                		lineStyle:{
+	                			color:'#FFAA31',
+	                		},
+	                		label : {
+	                			show: true
+	                		}
+	                	}
+	                }
+	            }
+	            ]
+	        };
+
+	        let option2 = {
+	            title: {
+	                text: '车辆数据分析'
+	            },
+	            tooltip: {},
+	            toolbox: {
+			        show: true,
+			        right: '10%',
+			        feature: {		            
+			            magicType: {
+			            	type: ['line', 'bar']
+			            },
+			            restore:{}
+			        }
+			    },
+	            legend: {
+	                data:['园区车辆','来访车辆']
+	            },
+	            xAxis: {
+	                data: timeLine,
+	                splitLine:{
+	            		show: true
+	            	}
+	            },
+	            yAxis: {
+	            	splitLine:{
+	            		show: true
+	            	}
+	            },
+	            series: [
+	            {
+	                name: '园区车辆',
+	                type: 'line',
+	                data: car,
+	                itemStyle : { 
+	                	normal: {
+	                		color:'#68AF27',
+	                		lineStyle:{
+	                			color:'#68AF27',
+	                		},
+	                		label : {
+	                			show: true
+	                		}
+	                	}
+	                }
+	            },
+	            {
+	                name: '来访车辆',
+	                type: 'line',
+	                data: visicar,
+	                itemStyle : { 
+	                	normal: {
+	                		color:'#C22439',
+	                		lineStyle:{
+	                			color:'#C22439',
+	                		},
+	                		label : {
+	                			show: true
+	                		}
+	                	}
+	                }
+	            }
+	            ]
+	        };
+
+	        // 使用刚指定的配置项和数据显示图表。
+	        myChart1.setOption(option1);
+	        myChart2.setOption(option2);
+        }      
+    </script>
+</body>
+</html>

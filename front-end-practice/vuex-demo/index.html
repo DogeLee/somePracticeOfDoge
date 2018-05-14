@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vuex-demo</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="https://unpkg.com/vue"></script>
+	<script type="text/javascript" src="https://unpkg.com/vuex"></script>
+</head>
+<body>
+	<div id="app"></div>
+</body>
+<script type="text/javascript">
+Vue.use(Vuex);
+
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  getters: {
+  	doubleCount: state=>{
+  		return state.count*2;
+  	}
+  },
+  mutations: {			//Mutation 必须是同步函数
+    increment (state,payload) {
+      state.count+=payload.n;
+    }
+  },
+  actions: {				//store.dispatch 可以处理被触发的 action 的处理函数返回的 Promise
+    increment (context,payload) {
+    	setInterval(()=>{
+    		context.commit('increment',{n:payload.n});
+    	},1000)  
+    }
+  }
+})
+
+store.commit('increment',{n:10});
+store.commit({			//使用对象形式整个对象作为载荷传入
+  type: 'increment',
+  n: 5
+})
+console.log(store.state.count); // -> 15
+
+// 创建一个 Counter 组件
+const Counter = {
+  template: `<div>{{ count }} {{doubleCount}}</div>`,
+  computed: {
+    count () {
+      return this.$store.state.count
+    },
+    doubleCount(){
+    	return this.$store.getters.doubleCount
+    }
+  },
+  mounted:()=>{
+  	store.dispatch('increment',{n:1});
+  }
+}
+
+const app = new Vue({
+  el: '#app',
+  // 把 store 对象提供给 “store” 选项，这可以把 store 的实例注入所有的子组件
+  store,
+  components: { Counter },
+  template: `
+    <div class="app">
+      <counter></counter>
+    </div>
+  `
+})
+</script>
+</html>

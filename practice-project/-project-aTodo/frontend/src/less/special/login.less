@@ -1,0 +1,62 @@
+@import url('../general/init.less');
+@import url('../general/flexible.less');
+@import url('../general/general.less');
+
+.container{
+	position: relative;
+	overflow: auto;
+	height: 100%;
+	width:100%;
+}
+
+.header{
+	height: 1%;
+	background-color: @green2;
+}
+
+.login{
+	width: 80%;
+	height: 25%;
+	position: absolute;
+    top: 30%;
+    right: 0;
+    bottom: 0;
+    left: 10%;
+    //border:1px solid @gray-border;
+}
+
+.p1{
+	width: 100%;
+	font-size: 1.5rem;
+	text-align: center;
+	position: absolute;
+	bottom: 72%;
+}
+
+.p2{
+	width: 100%;
+	font-size: 1.5rem;
+	text-align: center;
+	position: absolute;
+	top: 57%;
+	span{
+		text-decoration: underline;
+		&:active{
+			color:@green2;
+		}
+	}
+}
+
+.login-input{
+	display: block;
+	height: 20%;
+	width: 60%;
+	//padding-left: 2vw;
+	margin: auto;
+	margin-top: 2rem;
+	border:none;
+	border-bottom:1px solid @gray-border;
+	text-align: center;
+}
+
+

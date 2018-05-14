@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ajax-demo</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+	<script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+	<script src="javascripts/index.js"></script>
+</head>
+<body>
+	<div id="main">
+		<div id="demo1">
+			<input id="user_input" type="text" placeholder="输入学号">
+			<p>个人信息：
+				<a onclick="get_profile()">获取</a>
+			</p>
+			<p id="profile">不知道</p>
+		</div>
+		<div id="demo2">
+			<p>工作室人员:<a onclick="get_list()">获取</a></p>
+		</div>
+	</div>
+</body>
+</html>

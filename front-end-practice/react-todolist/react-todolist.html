@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hello React!</title>
+        <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+        <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+        <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="example"></div>
+        <script type="text/babel">
+        //如何实现父组件的state更新呢？
+        // 在父组件中声明方法，将它通过props传入子组件
+        // 在子组件中调用方法，并传入参数，以修改父组件中的state
+        // 总结就是，修改哪个组件的state，就在哪个组件中声明方法并调用setState方法
+
+        //最大的父组件
+        var Todolist = React.createClass({      
+            addFun:function(todoValue){
+                this.setState((state)=>{
+                    var newArr = state.list;
+                    newArr[newArr.length] = todoValue;
+                    return {list:newArr};
+                })
+            },
+
+            delFun:function(num){
+                this.setState((state)=>{
+                    var newArr = state.list;
+                    newArr.splice(num,1);
+                    return {list:newArr};
+                })
+            },
+
+            getInitialState:function(){
+                return {
+                    list:['吃饭','睡觉','打豆豆'],
+                }
+            },
+
+            render:function(){
+                return (
+                    <div>
+                        <Input addFun={this.addFun}/>
+                        <List list={this.state.list} delFun={this.delFun}/>
+                    </div>
+                );               
+            }
+        })
+
+        //负责输入的子组件
+        var Input = React.createClass({
+            addFun:function(){
+                this.props.addFun(this.state.val);
+            },
+
+            change:function(event){
+                this.setState({val:event.target.value});
+            },
+
+            getInitialState:function(){
+                return {
+                    val:''
+                }
+            },
+
+            render:function(){
+                return (
+                    <div>
+                        <input type="text" placeholder="输入一个新的待办事项" value={this.state.val} onChange={this.change}/>
+                        <input type="button" value="添加" onClick={this.addFun}/>
+                    </div>
+                );
+            }
+        })
+
+        //负责显示的子组件
+        var List = React.createClass({
+            render:function(){
+                return (
+                    <ul>
+                        {
+                            this.props.list.map((item,i)=>{
+                                return <Item item={item} num={i} delFun={this.props.delFun}/>
+                            })
+                        }
+                    </ul>
+                );
+            }
+        })
+
+
+        //显示的每一项的子组件
+        var Item = React.createClass({
+            delFun:function(){
+                this.props.delFun(this.props.num);
+            },
+            render:function(){
+                return (
+                    <li>
+                        <label>{this.props.item}</label>
+                        <input type="button" value="删除" onClick={this.delFun}/>
+                    </li>
+                );
+            }
+        })
+
+        ReactDOM.render(
+            <Todolist />,
+            document.getElementById('example')
+        );
+        </script>
+  </body>
+</html>

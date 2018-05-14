@@ -1,0 +1,2 @@
+var uid = $.cookie("uid");
+

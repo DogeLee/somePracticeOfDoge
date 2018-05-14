@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>demo</title>
+	<script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+</body>
+<script type="text/javascript">
+	$.ajax({
+		type: "GET",
+		url: "/json/data.json",
+		dataType: "json",
+		data: {},
+		success: function success(data) {
+			$("#container").html(data.content);
+		},
+		error: function error(jqXHR) {
+			alert("发生错误" + jqXHR.status);
+		}
+	});
+</script>
+</html>
