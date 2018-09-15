@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>垂直居中</title>
+	<style type="text/css">
+		.case{
+			height: 200px;
+			width: 200px;
+			background: gray;
+			margin-top: 20px;
+		}
+
+		#case1{
+			display: table;
+		}
+		#case1-1{
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		#case2-1{
+			line-height: 200px;
+		}
+
+		#case3{
+			display: flex;
+			align-items: center;
+		}
+		#case3-1{
+			background: red;
+		}
+
+		#case4{
+			position: relative;
+		}
+		#case4-1{
+			height: 100px;
+			background: red;
+			
+			position: absolute;
+			top: 50%;
+			margin-top: -50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="case" id="case1">
+		<div id="case1-1">多行文字垂直居中多行文字垂直居中多行文字垂直居中多行文字垂直居中多行文字垂直居中多行文字垂直居中</div>
+	</div>
+	<div class="case" id="case2">
+		<div id="case2-1">单行文字垂直居中</div>
+	</div>
+	<div class="case" id="case3">
+		<div id="case3-1">块居中（高度不固定）</div>
+	</div>
+	<div class="case" id="case4">
+		<div id="case4-1">块居中（高度固定）</div>
+	</div>
+</body>
+</html>
